@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            --backColor : #1e1e2e;
+        }
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            overflow: hidden;
+        }
+        .main{
+            height: 100vh;
+            width: 100vw;
+            background-color: var(--backColor);
+            color:#e0f3df;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main > div.control{
+            display: none;
+        }
+        .main.hide > div{
+            display: none;
+        }
+        .main.hide > div.control{
+            display: flex;
+        }
+        .main .control{
+            margin-top: 6rem;
+        }
+        .main .control > button{
+            margin: 1rem;
+            font-size: 2em;
+            padding: 16px;
+            border-radius: 20px;
+            background-color: rgb(0, 255, 21);
+        }
+        .main .control .selectHost{
+            display: flex;
+            flex-direction: column;
+            font-size: 1.2em;
+        }
+        .main .control .selectHost > button{
+            margin: 4px;
+            padding:4px 16px;
+            font-size: 1em;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .main .megdisplay{
+            flex-grow: 1;
+            width: 80%;
+            background-color: #010127;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
+
+        .main .megdisplay .incoming{
+            align-self: flex-start;
+            background-color: rgb(0, 77, 77);
+            padding: 8px;
+            margin: 4px;
+            border-radius: 5px;
+        }
+        .main .megdisplay .outgoing{
+            align-self: flex-end;
+            background-color: rgb(54, 77, 0);
+            padding: 8px;
+            margin: 4px;
+            border-radius: 5px;
+        }
+        .main .sender{
+            width: 80%;
+            padding: 4px;
+            background-color: #050513;
+            display: flex;
+        }
+        .main .sender button{
+            padding: 8px;
+            border: none;
+            background-color: rgb(0, 255, 21);
+        }
+        .main .sender button:hover{
+            background-color: rgb(85, 187, 93);
+        }
+        .main .sender input{
+            padding: 8px;
+            border: none;
+            background-color: rgb(211, 231, 212);
+            flex-grow: 1;
+            border-radius: 10px;
+        }
+
+        /* host naming  */
+        .hostname{
+            display: flex;
+            flex-direction: column;
+            font-size: 1.4em;
+        }
+        .hostname input{
+            font-size: 1em;
+            padding: 4px;
+            margin:4px 0px;
+        }
+        .hostname button{
+            padding: 8px;
+            font-size: 1em;
+        }
+        /* loader */
+        @keyframes spin{
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(360deg);}
+        }
+        @-o-keyframes spin{
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(360deg);}
+        }
+        @-webkit-keyframes spin{
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(360deg);}
+        }
+        @-moz-keyframes spin{
+            0% {transform: rotate(0deg);}
+            100% {transform: rotate(360deg);}
+        }
+        span.loader{
+            border: 16px solid #8c8f8c;
+            border-top:16px solid blue;
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="main hide">
+            <h1>Peer Messager</h1>
+            <div class="megdisplay">
+                <!-- <div class="incoming">
+                    hello world
+                </div>
+                <div class="outgoing">
+                    hi world
+                </div> -->
+            </div>
+            <div class="sender">
+                <input type="text">
+                <button>send</button>
+            </div>
+            <div class="control">
+                <button onclick="toHost();">Host</button>
+                <button onclick="toJoin();">Join</button>
+                <!-- <div class="hostname">
+                    <label for="name">Enter your name : </label>
+                    <input type="text" id="name">
+                    <button onclick="createHost()">create Host</button>
+                </div> -->
+                <!-- <div class="selectHost">
+                    <h3>Select Your Host</h3>
+                    <button onclick="toSelectHost(1)">Hello world</button>
+                    <button>Hello world</button>
+                    <button>Hello world</button>
+                    <button>Hello world</button>
+                </div> -->
+                <!-- <span class="loader"></span> -->
+            </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>
