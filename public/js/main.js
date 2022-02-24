@@ -93,7 +93,7 @@ function lookingClient(){
         if(data.clind != "")
         {
             local.setRemoteDescription(JSON.parse(data.clind))
-            then(()=>{
+            .then(()=>{
                 console.log("set Remote Description");
             })
             .catch(err=>{
