@@ -52,6 +52,9 @@ function toSelectHost(id){
         clind_id = data.clind_id;
         console.log(data);
         hostAnswer(JSON.parse(data.sdp))
+        .catch(err=>{
+            console.error(err);
+        })
     })
 }
 function toJoin(){
@@ -77,7 +80,10 @@ function createHost(){
         (e || window.event).returnValue = cmfMsg;
         return cmfMsg;
     });
-    createHostOffer();
+    createHostOffer()
+    .catch(err=>{
+        console.log(err)
+    });
 }
 
 function lookingClient(){
@@ -86,7 +92,10 @@ function lookingClient(){
     .then(data=>{
         if(data.clind != "")
         {
-            local.setRemoteDescription(JSON.parse(data.clind));
+            local.setRemoteDescription(JSON.parse(data.clind))
+            .catch(err=>{
+                console.error(err);
+            })
         }else{
             setTimeout(lookingClient, 1000);
         }
@@ -107,7 +116,13 @@ async function jsonPostTo(url, data)
 }
 
 //remote working here
-var local = new RTCPeerConnection({iceServers:[{urls:['stun:stun1.l.google.com:19302', 'stun:stun2.l.google.com:19302']}]});
+const configuration = {
+    'iceServers': [
+        {'urls': 'stun:stun.l.google.com:19302'}
+    ],
+    iceCandidatePoolSize: 10
+}
+var local = new RTCPeerConnection(configuration);
 var datach;
 
 var signalingOk = false;
